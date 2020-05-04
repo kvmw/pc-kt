@@ -1,0 +1,31 @@
+name: Publish Test
+
+on:
+  repository_dispatch:
+    types: [publish-test]
+
+jobs:
+
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+
+      - run: echo ::set-output name=commitsha::$(git rev-parse --short HEAD)
+
+      - name: Create Test Release
+        id: create_test_release
+        uses: fleskesvor/create-release@feature/support-target-commitish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.client_payload.ref }}
+          release_name: Test Build ${{ github.event.client_payload.ref }}
+          body: |
+            New test build
+
