@@ -17,6 +17,7 @@ jobs:
           GITHUB_VERBOSE: 1
         uses: actions/checkout@v2
         with:
+          token: ${{ secrets.token }}       
           ref: ${{ github.event.client_payload.ref }}
 
       - run: echo ::set-output name=commitsha::$(git rev-parse --short HEAD)
