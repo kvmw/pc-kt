@@ -19,6 +19,7 @@ jobs:
         with:
           token: ${{ secrets.token }}       
           ref: ${{ github.event.client_payload.ref }}
+          submodules: true
 
       - run: echo ::set-output name=commitsha::$(git rev-parse --short HEAD)
 
