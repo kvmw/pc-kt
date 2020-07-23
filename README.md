@@ -1,4 +1,4 @@
-# parser-combinators ![](https://github.com/kvmw/pc-kt/workflows/ci/badge.svg)
+# parser-combinators ![](https://github.com/kvmw/pc-kt/workflows/CI/badge.svg)
 understanding parser combinators 
 
 ##### A kotlin implementatoin of parser combinators based on Scott Wlaschin talk at NDC {Oslo}
